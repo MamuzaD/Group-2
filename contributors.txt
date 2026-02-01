@@ -1,3 +1,4 @@
 Name, Email
 Daniel Mamuza, mamuza@unlv.nevada.edu
 Jonah Lewis, Lewisj41@unlv.nevada.edu
+Jimmy Dagum, dagum@unlv.nevada.edu
