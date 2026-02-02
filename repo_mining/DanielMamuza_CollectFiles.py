@@ -40,14 +40,20 @@ def github_auth(url, tokens, ct):
     return jsonData, ct
 
 
-def is_source_file(filename: str) -> bool:
-    """Source files are those under app/ that are a coding file (not asset/image)"""
-    # must be under app/ directory
-    if not filename.startswith("app/"):
+def is_src_file(filename: str) -> bool:
+    # must be under app/ or rootbeerlib/ directory
+    if not (filename.startswith("app/") or filename.startswith("rootbeerlib/")):
         return False
 
-    # whitelist of source code extensions only
-    source_extensions = {".java", ".kt", ".cpp", ".c", ".cmake"}
+    # exclude test files
+    if "/test/" in filename.lower() or "/androidtest/" in filename.lower():
+        return False
+
+    if filename.endswith("CMakeLists.txt"):
+        return True
+
+    # whitelist of source code extensions
+    source_extensions = {".java", ".kt", ".cpp", ".c", ".h", ".cmake"}
     _, ext = os.path.splitext(filename.lower())
 
     return ext in source_extensions
@@ -87,7 +93,7 @@ def countfiles(dictAllFiles, dictSrcFiles, lsttokens, repo):
                     filename = filenameObj["filename"]
                     dictAllFiles[filename] = dictAllFiles.get(filename, 0) + 1
 
-                    if is_source_file(filename):
+                    if is_src_file(filename):
                         dictSrcFiles[filename] = dictSrcFiles.get(filename, 0) + 1
                         print(f"[SOURCE] {filename}")
                     else:
