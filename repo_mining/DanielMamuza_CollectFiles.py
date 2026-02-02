@@ -8,18 +8,35 @@ if not os.path.exists("data"):
     os.makedirs("data")
 
 
+def load_tokens() -> list[str]:
+    try:
+        from dotenv import load_dotenv
+
+        load_dotenv()
+    except Exception:
+        pass
+
+    tokens_csv = os.getenv("GITHUB_TOKENS", "").strip()
+    if tokens_csv:
+        return [t.strip() for t in tokens_csv.split(",") if t.strip()]
+
+    token = os.getenv("GITHUB_TOKEN", "").strip()
+    return [token] if token else []
+
+
 # GitHub Authentication function
-def github_auth(url, lsttoken, ct):
+def github_auth(url, tokens, ct):
     jsonData = None
     try:
-        ct = ct % len(lstTokens)
-        headers = {"Authorization": "Bearer {}".format(lsttoken[ct])}
+        ct = ct % len(tokens)
+        headers = {"Authorization": "Bearer {}".format(tokens[ct])}
         request = requests.get(url, headers=headers)
         jsonData = json.loads(request.content)
         ct += 1
     except Exception as e:
         pass
         print(e)
+        raise e
     return jsonData, ct
 
 
@@ -70,35 +87,48 @@ repo = "scottyab/rootbeer"
 # repo = 'mendhak/gpslogger'
 
 
+# NOTE :: preferring to use environment vars instead - daniel
+
 # put your tokens here
 # Remember to empty the list when going to commit to GitHub.
 # Otherwise they will all be reverted and you will have to re-create them
 # I would advise to create more than one token for repos with heavy commits
-lstTokens = [
-    "fd02a694b606c4120b8ca7bbe7ce29229376ee",
-    "16ce529bdb32263fb90a392d38b5f53c7ecb6b",
-    "8cea5715051869e98044f38b60fe897b350d4a",
-]
+# lstTokens = [
+#     "fd02a694b606c4120b8ca7bbe7ce29229376ee",
+#     "16ce529bdb32263fb90a392d38b5f53c7ecb6b",
+#     "8cea5715051869e98044f38b60fe897b350d4a",
+# ]
 
-dictfiles = dict()
-countfiles(dictfiles, lstTokens, repo)
-print("Total number of files: " + str(len(dictfiles)))
 
-file = repo.split("/")[1]
-# change this to the path of your file
-fileOutput = "data/file_" + file + ".csv"
-rows = ["Filename", "Touches"]
-fileCSV = open(fileOutput, "w")
-writer = csv.writer(fileCSV)
-writer.writerow(rows)
+def main():
+    lstTokens = load_tokens()
+    dictfiles = dict()
+    countfiles(dictfiles, lstTokens, repo)
+    print("Total number of files: " + str(len(dictfiles)))
 
-bigcount = None
-bigfilename = None
-for filename, count in dictfiles.items():
-    rows = [filename, count]
+    file = repo.split("/")[1]
+    # change this to the path of your file
+    fileOutput = "data/file_" + file + ".csv"
+    rows = ["Filename", "Touches"]
+    fileCSV = open(fileOutput, "w")
+    writer = csv.writer(fileCSV)
     writer.writerow(rows)
-    if bigcount is None or count > bigcount:
-        bigcount = count
-        bigfilename = filename
-fileCSV.close()
-print("The file " + bigfilename + " has been touched " + str(bigcount) + " times.")
+
+    bigcount = None
+    bigfilename = None
+    for filename, count in dictfiles.items():
+        rows = [filename, count]
+        writer.writerow(rows)
+        if bigcount is None or count > bigcount:
+            bigcount = count
+            bigfilename = filename
+    fileCSV.close()
+
+    if bigfilename is not None:  # fix pyright type issue - daniel
+        print(
+            "The file " + bigfilename + " has been touched " + str(bigcount) + " times."
+        )
+
+
+if __name__ == "__main__":
+    main()
