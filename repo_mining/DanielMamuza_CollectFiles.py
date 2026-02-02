@@ -40,10 +40,23 @@ def github_auth(url, tokens, ct):
     return jsonData, ct
 
 
+def is_source_file(filename: str) -> bool:
+    """Source files are those under app/ that are a coding file (not asset/image)"""
+    # must be under app/ directory
+    if not filename.startswith("app/"):
+        return False
+
+    # whitelist of source code extensions only
+    source_extensions = {".java", ".kt", ".cpp", ".c", ".cmake"}
+    _, ext = os.path.splitext(filename.lower())
+
+    return ext in source_extensions
+
+
 # @dictFiles, empty dictionary of files
 # @lstTokens, GitHub authentication tokens
 # @repo, GitHub repo
-def countfiles(dictfiles, lsttokens, repo):
+def countfiles(dictAllFiles, dictSrcFiles, lsttokens, repo):
     ipage = 1  # url page counter
     ct = 0  # token counter
 
@@ -72,8 +85,13 @@ def countfiles(dictfiles, lsttokens, repo):
                 filesjson = shaDetails["files"]
                 for filenameObj in filesjson:
                     filename = filenameObj["filename"]
-                    dictfiles[filename] = dictfiles.get(filename, 0) + 1
-                    print(filename)
+                    dictAllFiles[filename] = dictAllFiles.get(filename, 0) + 1
+
+                    if is_source_file(filename):
+                        dictSrcFiles[filename] = dictSrcFiles.get(filename, 0) + 1
+                        print(f"[SOURCE] {filename}")
+                    else:
+                        print(f"[OTHER]  {filename}")
             ipage += 1
     except:
         print("Error receiving data")
@@ -100,17 +118,10 @@ repo = "scottyab/rootbeer"
 # ]
 
 
-def main():
-    lstTokens = load_tokens()
-    dictfiles = dict()
-    countfiles(dictfiles, lstTokens, repo)
-    print("Total number of files: " + str(len(dictfiles)))
-
-    file = repo.split("/")[1]
-    # change this to the path of your file
-    fileOutput = "data/file_" + file + ".csv"
+def write_csv(filename, dictfiles):
     rows = ["Filename", "Touches"]
-    fileCSV = open(fileOutput, "w")
+
+    fileCSV = open(filename, "w")
     writer = csv.writer(fileCSV)
     writer.writerow(rows)
 
@@ -128,6 +139,24 @@ def main():
         print(
             "The file " + bigfilename + " has been touched " + str(bigcount) + " times."
         )
+    return bigfilename, bigcount
+
+
+def main():
+    lstTokens = load_tokens()
+    dictAllFiles = dict()
+    dictSrcFiles = dict()
+    countfiles(dictAllFiles, dictSrcFiles, lstTokens, repo)
+    print("Total number of files: " + str(len(dictAllFiles)))
+
+    file = repo.split("/")[1]
+    # write general CSV (all files)
+    fileOutputAll = "data/file_" + file + ".csv"
+    write_csv(fileOutputAll, dictAllFiles)
+
+    # write source files CSV
+    fileOutputSrc = "data/file_" + file + "_src.csv"
+    write_csv(fileOutputSrc, dictSrcFiles)
 
 
 if __name__ == "__main__":
