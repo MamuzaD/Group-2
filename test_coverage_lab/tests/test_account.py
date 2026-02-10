@@ -93,6 +93,46 @@ Each test should include:
 - A meaningful **commit message** when submitting their PR.
 """
 
+# ===========================
+# Test: Account Serialization
+# Author: Daniel Mamuza
+# Date: 2026-02-09
+# Description: Ensure invalid roles raise a DataValidationError.
+# ===========================
+
+
+def test_account_serialization():
+    """Test that an account serializes to a dictionary"""
+    account = Account(
+        name="Thorfinn",
+        email="no.enemies@vinland.com",
+        phone_number="123456789",
+        disabled=False,
+        balance=0.0,
+        role="user",
+    )
+
+    db.session.add(account)
+    db.session.commit()
+
+    data = account.to_dict()
+
+    # verify type and serialized values
+    assert isinstance(data, dict)
+    assert "password_hash" not in data
+    assert data == {
+        "id": account.id,
+        "name": "Thorfinn",
+        "email": "no.enemies@vinland.com",
+        "phone_number": "123456789",
+        "disabled": False,
+        "date_joined": account.date_joined,
+        "balance": 0.0,
+        "role": "user",
+    }
+
+
+
 # TODO 1: Test Default Values
 # - Ensure that new accounts have the correct default values (e.g., `disabled=False`).
 # - Check if an account has no assigned role, it defaults to "user".
