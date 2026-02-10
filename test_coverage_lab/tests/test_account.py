@@ -97,7 +97,7 @@ Each test should include:
 # Test: Account Serialization
 # Author: Daniel Mamuza
 # Date: 2026-02-09
-# Description: Ensure invalid roles raise a DataValidationError.
+# Description: Ensure Account.to_dict() returns a correct dictionary representation.
 # ===========================
 
 
