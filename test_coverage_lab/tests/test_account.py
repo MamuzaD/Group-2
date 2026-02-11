@@ -2,6 +2,7 @@
 Test Cases for Account Model
 """
 import json
+from datetime import datetime, timedelta
 from random import randrange
 import pytest
 from models import db
@@ -93,9 +94,25 @@ Each test should include:
 - A meaningful **commit message** when submitting their PR.
 """
 
-# TODO 1: Test Default Values
+# ===========================
+# Test: Default Values
+# Author: Daniel Mamuza
+# Date: 2026-02-10
+# Description:
 # - Ensure that new accounts have the correct default values (e.g., `disabled=False`).
 # - Check if an account has no assigned role, it defaults to "user".
+# ===========================
+def test_default_values():
+    account = Account(name="Thorfinn", email="no.enemies@vinland.com")
+    db.session.add(account)
+    db.session.commit()
+
+    assert account.disabled is False
+    assert account.role == "user"
+    assert account.balance == 0.0
+    # date_joined should be set and similar to current time
+    assert account.date_joined is not None
+    assert datetime.utcnow() - account.date_joined < timedelta(seconds=1)
 
 # TODO 2: Test Updating Account Email
 # - Ensure an account’s email can be successfully updated.
