@@ -93,6 +93,32 @@ Each test should include:
 - A meaningful **commit message** when submitting their PR.
 """
 
+# ===========================
+# Test: Valid Withdrawal
+# Author: Jimmy Dagum
+# Date: 2026-02-06
+# Description: Ensure withdrawing a valid amount decreases the balance correctly.
+# ===========================
+
+def test_valid_withdrawal(setup_account):
+    """Test withdrawing a valid amount from an account reduces balance correctly."""
+    account = setup_account
+
+    # Arrange: give the account an initial balance
+    account.balance = 100.00
+    db.session.commit()
+
+    # Act: withdraw a valid amount
+    account.withdraw(40.00)
+    db.session.commit()
+
+    # Assert: balance decreased by the withdrawn amount
+    assert account.balance == 60.00
+
+    # Verify persisted in the database
+    refreshed = Account.query.get(account.id)
+    assert refreshed.balance == 60.00
+
 # TODO 1: Test Default Values
 # - Ensure that new accounts have the correct default values (e.g., `disabled=False`).
 # - Check if an account has no assigned role, it defaults to "user".
