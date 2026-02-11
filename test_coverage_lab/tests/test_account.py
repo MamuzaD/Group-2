@@ -2,7 +2,6 @@
 Test Cases for Account Model
 """
 import json
-from datetime import datetime, timedelta
 from random import randrange
 import pytest
 from models import db
@@ -94,63 +93,50 @@ Each test should include:
 - A meaningful **commit message** when submitting their PR.
 """
 
-# ===========================
-# Test: Default Values
-# Author: Daniel Mamuza
-# Date: 2026-02-10
-# Description:
-# - Ensure that new accounts have the correct default values (e.g., `disabled=False`).
-# - Check if an account has no assigned role, it defaults to "user".
-# ===========================
-def test_default_values():
-    account = Account(name="Thorfinn", email="no.enemies@vinland.com")
-    db.session.add(account)
-    db.session.commit()
+# Test Assignments
 
-    assert account.disabled is False
-    assert account.role == "user"
-    assert account.balance == 0.0
-    # date_joined should be set and similar to current time
-    assert account.date_joined is not None
-    assert datetime.utcnow() - account.date_joined < timedelta(seconds=1)
+# Student 1: Test account serialization
+# - Verify that the account object is correctly serialized to a dictionary.
+# - Ensure all expected fields are included in the output.
+# Target Method: to_dict()
 
-# TODO 2: Test Updating Account Email
-# - Ensure an account’s email can be successfully updated.
-# - Verify that the updated email is stored in the database.
+# Student 2: Test invalid email input
+# - Ensure invalid email formats raise a validation error.
+# Target Method: validate_email()
 
-# TODO 3: Test Finding an Account by ID
-# - Create an account and retrieve it using its ID.
-# - Ensure the retrieved account matches the created one.
+# Student 3: Test missing required fields
+# - Ensure account initialization fails when required fields are missing.
+# Target Method: Account() initialization
 
-# TODO 4: Test Invalid Email Handling
-# - Check that invalid emails (e.g., "not-an-email") raise a validation error.
-# - Ensure accounts without an email cannot be created.
+# Student 4: Test positive deposit
+# - Verify that depositing a positive amount correctly increases the balance.
+# Target Method: deposit()
 
-# TODO 5: Test Password Hashing
-# - Ensure that passwords are stored as **hashed values**.
-# - Verify that plaintext passwords are never stored in the database.
+# Student 5: Test deposit with zero/negative values
+# - Ensure zero or negative deposits are rejected.
+# Target Method: deposit()
 
-# TODO 6: Test Account Persistence
-# - Create an account, commit the session, and restart the session.
-# - Ensure the account still exists in the database.
+# Student 6: Test valid withdrawal
+# - Verify that withdrawing a valid amount correctly decreases the balance.
+# Target Method: withdraw()
 
-# TODO 7: Test Searching by Name
-# - Ensure accounts can be searched by their **name**.
-# - Verify that partial name searches return relevant accounts.
+# Student 7: Test withdrawal with insufficient funds
+# - Ensure withdrawal fails when balance is insufficient.
+# Target Method: withdraw()
 
-# TODO 8: Test Bulk Insertion
-# - Create and insert multiple accounts at once.
-# - Verify that all accounts are successfully stored in the database.
+# Student 8: Test password hashing
+# - Ensure passwords are properly hashed.
+# - Verify that password verification works correctly.
+# Target Methods: set_password() / check_password()
 
-# TODO 9: Test Account Deactivation/Reactivate
-# - Ensure accounts can be deactivated.
-# - Verify that deactivated accounts cannot perform certain actions.
-# - Ensure reactivation correctly restores the account.
+# Student 9: Test account deactivation/reactivation
+# - Ensure accounts can be deactivated and reactivated correctly.
+# Target Methods: deactivate() / reactivate()
 
-# TODO 10: Test Email Uniqueness Enforcement
-# - Ensure that duplicate emails are not allowed.
-# - Verify that accounts must have a unique email in the database.
+# Student 10: Test email uniqueness enforcement
+# - Ensure duplicate emails are not allowed.
+# Target Method: validate_unique_email()
 
-# TODO 11: Test Role-Based Access
-# - Ensure users with different roles ('admin', 'user', 'guest') have appropriate permissions.
-# - Verify that role changes are correctly reflected in the database.
+# Student 11: Test deleting an account
+# - Verify that an account can be successfully deleted from the database.
+# Target Method: delete()
