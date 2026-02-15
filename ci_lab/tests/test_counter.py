@@ -281,3 +281,12 @@ class TestCounterEndpoints:
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
 
 
+    # ===========================
+    # Test: Prevent setting counter values with an invalid integer.
+    # Author: Reece Galgana
+    # Modification: Ensures a bad request code is returned upon invalid assignment.
+    # ===========================
+    def test_no_counters_available(self, client):
+        client.post('/counters/test')
+        response = client.put('counters/test/set/this_is_not_an_integer')
+        assert response.status_code == HTTPStatus.BAD_REQUEST
