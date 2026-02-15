@@ -162,7 +162,6 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.OK
         assert response.get_json() == {"test1": 5}
-
         # TODO: Add an assertion to check setting to the same value does not change it again
 
     # ===========================
