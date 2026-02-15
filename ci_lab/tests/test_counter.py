@@ -275,7 +275,6 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
-
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
 
 
