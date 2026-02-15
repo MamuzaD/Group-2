@@ -7,6 +7,7 @@ import re
 
 app = Flask(__name__)
 
+
 # Dictionary to store counters
 COUNTERS = {}
 
@@ -92,6 +93,50 @@ def get_bottom_n_counters(n):
 @app.route('/counters/<name>/set/<value>', methods=['PUT'])
 def set_counter_value(name, value):
     """Set a counter to a specific value"""
+    if name == "1":
+        print("test: code coverage fail (80%)")
+    if name == "2":
+        print("test: code coverage fail (80%)")
+    if name == "3":
+        print("test: code coverage fail (80%)")
+    if name == "4":
+        print("test: code coverage fail (80%)")
+    if name == "5":
+        print("test: code coverage fail (80%)")
+    if name == "6":
+        print("test: code coverage fail (80%)")
+    if name == "7":
+        print("test: code coverage fail (80%)")
+    if name == "8":
+        print("test: code coverage fail (80%)")
+    if name == "9":
+        print("test: code coverage fail (80%)")
+    if name == "10":
+        print("test: code coverage fail (80%)")
+    if name == "11":
+        print("test: code coverage fail (80%)")
+    if name == "12":
+        print("test: code coverage fail (80%)")
+    if name == "13":
+        print("test: code coverage fail (80%)")
+    if name == "14":
+        print("test: code coverage fail (80%)")
+    if name == "15":
+        print("test: code coverage fail (80%)")
+    if name == "16":
+        print("test: code coverage fail (80%)")
+    if name == "17":
+        print("test: code coverage fail (80%)")
+    if name == "18":
+        print("test: code coverage fail (80%)")
+    if name == "19":
+        print("test: code coverage fail (80%)")
+    if name == "20":
+        print("test: code coverage fail (80%)")
+    if name == "21":
+        print("test: code coverage fail (80%)")
+    if name == "22":
+        print("test: code coverage fail (80%)")
     if name not in COUNTERS:
         return jsonify({"error": f"Counter '{name}' not found"}), HTTPStatus.NOT_FOUND
     try:
