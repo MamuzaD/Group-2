@@ -151,8 +151,8 @@ class TestCounterEndpoints:
         # TODO: Add an assertion to check that 'b' is indeed in the response
 
     # ===========================
-    # Test: Set a counter to a specific value
-    # Author: Student 4
+    # Test: Set a counter to a specific value.
+    # Author: Student 4: Reece Galgana
     # Modification: Ensure setting a counter to the same value does nothing.
     # ===========================
     def test_set_counter_to_value(self, client):
@@ -162,7 +162,10 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.OK
         assert response.get_json() == {"test1": 5}
-        # TODO: Add an assertion to check setting to the same value does not change it again
+
+        response2 = client.put('/counters/test1/set/5')
+        assert response2.status_code == HTTPStatus.OK
+        assert response2.get_json() == {"test1": 5}
 
     # ===========================
     # Test: Prevent negative counter values
