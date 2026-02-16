@@ -37,3 +37,20 @@ class TestCounterEndpoints:
         result = client.get('/counters/gorillasushi')
         assert result.status_code == status.HTTP_404_NOT_FOUND
 
+
+    def test_delete_counter(self, client):
+        """after a counter has been deleted, it should be non-existant"""
+
+        #Arrange -> create a counter
+        counter_name = 'counter'
+        client.post('/counters/' + counter_name)
+
+        #Act -> delete the counter
+        deletion_result = client.delete('/counters/' + counter_name)
+
+        #Assert -> check for 204 code and that counter is no longer extant
+        assert deletion_result.status_code == status.HTTP_204_NO_CONTENT
+
+        check_existence_result = client.get('/counters/' + counter_name)
+        assert check_existence_result.status_code == status.HTTP_404_NOT_FOUND
+
