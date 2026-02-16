@@ -1,8 +1,6 @@
-#!/Users/nathan/Group-2/test_coverage_lab/test_coverage/venv/bin/python3.13
-# -*- coding: utf-8 -*-
-import re
+#!/Users/nathan/Group-2/test_coverage_lab/venv/bin/python3.13
 import sys
 from pytest import console_main
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
     sys.exit(console_main())
