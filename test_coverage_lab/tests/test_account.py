@@ -208,10 +208,23 @@ def test_positive_deposit():
     account.deposit(2**32.1)
     assert account.balance == (2**32) + 1 + 1.982 + (2**32.1)
 
+# ===========================
+# Test: Test Zero/Negative Deposit
+# Author: Evan Kinnear
+# Date: 2025-02-16
+# Description: Verify that depositing a negative or zero amount raises an exception.
+# ===========================
+def test_zero_negative_deposit():
+    """Test depositing a zero or negative number to an account."""
 
-# Student 5: Test deposit with zero/negative values
-# - Ensure zero or negative deposits are rejected.
-# Target Method: deposit()
+    account = Account(balance=0)
+
+    with pytest.raises(DataValidationError):
+        # Test depositing zero
+        account.deposit(0)
+
+        # Test depositing a negative number
+        account.deposit(-1)
 
 # Student 6: Test valid withdrawal
 # - Verify that withdrawing a valid amount correctly decreases the balance.
