@@ -1,4 +1,4 @@
-name: CI Workflow  # Name of the workflow
+name: CI Workflow # Name of the workflow
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
     defaults:
       run:
-        working-directory: ci_lab  # Set the default working directory for all steps
+        working-directory: ci_lab # Set the default working directory for all steps
 
     steps:
       - name: Checkout Repository
@@ -17,7 +17,7 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"  # Ensure consistency in Python version
+          python-version: "3.9" # Ensure consistency in Python version
 
       - name: Install Dependencies
         run: |
@@ -27,15 +27,17 @@ jobs:
       - name: Run Tests with Pytest
         run: pytest --cov=src --cov-report=term-missing
 
-      - name: Install Flake8
-        run: pip install flake8
-
+      # handled by requirements.txt
+      # - name: Install Flake8
+      #   run: pip install flake8
       - name: Run Flake8 Linting
         run: flake8 src --count --select=E9,F63,F7,F82 --show-source --statistics
 
-      - name: Install Black
-        run: pip install black
+      # handled by requirements.txt
+      # - name: Install Black
+      #   run: pip install black
 
       - name: Run Black (check only)
         run: black --check src tests
       # test
+
