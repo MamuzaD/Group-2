@@ -6,6 +6,9 @@ from flask import Flask, jsonify
 from http import HTTPStatus
 import re
 
+# request is unused
+# from flask import request
+
 app = Flask(__name__)
 
 # Dictionary to store counters
