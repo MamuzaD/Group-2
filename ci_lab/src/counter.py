@@ -11,6 +11,9 @@ app = Flask(__name__)
 # Dictionary to store counters
 COUNTERS = {}
 
+# Intentional Black violation for Phase 3 debugging PR
+_dummy = {"a":1,"b":2}                                                                                                    
+
 
 def is_valid_counter_name(name):
     """Validate counter name to ensure it contains only alphanumeric characters"""
