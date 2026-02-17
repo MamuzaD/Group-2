@@ -12,12 +12,6 @@ ACCOUNT_DATA = {}
 
 @pytest.fixture(scope="module", autouse=True)
 def load_account_data():
-    """ Load data needed by tests """
-    global ACCOUNT_DATA
-    with open('tests/fixtures/account_data.json') as json_data:
-
-@pytest.fixture(scope="module", autouse=True)
-def load_account_data():
     """Load data needed by tests"""
     global ACCOUNT_DATA
     with open("tests/fixtures/account_data.json") as json_data:
@@ -284,6 +278,33 @@ def test_password_hashing(setup_account):
 # Student 9: Test account deactivation/reactivation
 # - Ensure accounts can be deactivated and reactivated correctly.
 # Target Methods: deactivate() / reactivate()
+# ===========================
+# Test: Account Deactivation and Reactivation
+# Author: Jessey Morales Trejo
+# Date: 2026-02-16
+# Description: Ensure accounts can be deactivated and reactivated correctly.
+# ===========================
+
+def test_account_deactivation_reactivation():
+#Test that an account can be deactivated and reactivated
+
+    account = Account(name="Test User", email="testuser@example.com")
+    db.session.add(account)
+    db.session.commit()
+
+    assert account.disabled is False
+
+    account.deactivate()
+    db.session.commit()
+
+    retrieved = Account.query.filter_by(email="testuser@example.com").first()
+    assert retrieved.disabled is True
+
+    retrieved.reactivate()
+    db.session.commit()
+
+    updated = Account.query.filter_by(email="testuser@example.com").first()
+    assert updated.disabled is False
 
 # Student 10: Test email uniqueness enforcement
 # - Ensure duplicate emails are not allowed.
