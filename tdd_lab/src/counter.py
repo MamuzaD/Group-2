@@ -17,22 +17,20 @@ def counter_exists(name):
 def create_counter(name):
     """Create a counter"""
     if counter_exists(name):
-        return jsonify({"error": f"Counter {name} already exists"}), status.HTTP_409_CONFLICT
+        return duplicate_counter_response(name)
     COUNTERS[name] = 0
     return jsonify({name: COUNTERS[name]}), status.HTTP_201_CREATED
 
-def counter_exists(name):
-    """Check if counter exists"""
-    return name in COUNTERS
+def duplicate_counter_response(name):
+    """Duplicate counter error response"""
+    return jsonify({"error": f"Counter {name} already exists"}), status.HTTP_409_CONFLICT
 
 
 @app.route("/counters/<name>", methods=["POST"])
 def create_counter(name):
     """Create a counter"""
     if counter_exists(name):
-        return jsonify(
-            {"error": f"Counter {name} already exists"}
-        ), status.HTTP_409_CONFLICT
+        return duplicate_counter_response(name)
     COUNTERS[name] = 0
     return jsonify({name: COUNTERS[name]}), status.HTTP_201_CREATED
 

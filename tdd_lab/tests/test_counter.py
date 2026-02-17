@@ -29,6 +29,14 @@ class TestCounterEndpoints:
         result = client.post('/counters/foo')
         assert result.status_code == status.HTTP_201_CREATED
 
+    def test_duplicate_counter(self, client):
+        """It should create a counter with a duplicate name"""
+        result1 = client.post('/counters/dup')
+        assert result1.status_code == status.HTTP_201_CREATED
+
+        result2 = client.post('/counters/dup')
+        assert result2.status_code == status.HTTP_409_CONFLICT
+  
     def test_invalid_http_method(self, client):
         """It should return 405 Method Not Allowed for invalid HTTP methods"""
         result = client.get('/counters/foo')  # GET not allowed for this endpoint
