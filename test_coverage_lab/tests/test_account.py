@@ -11,7 +11,6 @@ from sqlalchemy.exc import IntegrityError
 
 ACCOUNT_DATA = {}
 
-
 @pytest.fixture(scope="module", autouse=True)
 def load_account_data():
     """Load data needed by tests"""
@@ -33,6 +32,9 @@ def setup_account():
     db.session.commit()
     return account
 
+@pytest.fixture(scope="function", autouse=True)
+def setup_and_teardown():
+    """ Truncate the tables and set up for each test """
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_and_teardown():
@@ -104,6 +106,14 @@ Each test should include:
 
 # Test Assignments
 
+# Student 1: Test account serialization
+# - Verify that the account object is correctly serialized to a dictionary.
+# - Ensure all expected fields are included in the output.
+# Target Method: to_dict()
+
+# Student 2: Test invalid email input
+# - Ensure invalid email formats raise a validation error.
+# Target Method: validate_email()
 # ===========================
 # Test: Account Serialization
 # Author: Daniel Mamuza
@@ -197,6 +207,9 @@ def test_missing_required_fields():
     # Roll back session to restore db
     db.session.rollback()
 
+# Student 4: Test positive deposit
+# - Verify that depositing a positive amount correctly increases the balance.
+# Target Method: deposit()
 # ===========================
 # Test: Test Positive Deposit
 # Author: Reece Galgana
@@ -232,6 +245,9 @@ def test_positive_deposit():
 # - Verify that withdrawing a valid amount correctly decreases the balance.
 # Target Method: withdraw()
 
+# Student 7: Test withdrawal with insufficient funds
+# - Ensure withdrawal fails when balance is insufficient.
+# Target Method: withdraw()
 # ===========================
 # Test: Test Withdrawl With Insufficient Funds
 # Author: Jonah Lewis
@@ -277,6 +293,33 @@ def test_password_hashing(setup_account):
 # Student 9: Test account deactivation/reactivation
 # - Ensure accounts can be deactivated and reactivated correctly.
 # Target Methods: deactivate() / reactivate()
+# ===========================
+# Test: Account Deactivation and Reactivation
+# Author: Jessey Morales Trejo
+# Date: 2026-02-16
+# Description: Ensure accounts can be deactivated and reactivated correctly.
+# ===========================
+
+def test_account_deactivation_reactivation():
+#Test that an account can be deactivated and reactivated
+
+    account = Account(name="Test User", email="testuser@example.com")
+    db.session.add(account)
+    db.session.commit()
+
+    assert account.disabled is False
+
+    account.deactivate()
+    db.session.commit()
+
+    retrieved = Account.query.filter_by(email="testuser@example.com").first()
+    assert retrieved.disabled is True
+
+    retrieved.reactivate()
+    db.session.commit()
+
+    updated = Account.query.filter_by(email="testuser@example.com").first()
+    assert updated.disabled is False
 
 # Student 10: Test email uniqueness enforcement
 # - Ensure duplicate emails are not allowed.
@@ -302,6 +345,7 @@ def validate_unique_email():
 
 # Student 11: Test deleting an account
 # - Verify that an account can be successfully deleted from the database.
+# Target Method: delete()
 # Target Method: delete()
 # Test: Deleting An Account
 # Author: Yahir Escobar
