@@ -1,6 +1,7 @@
 """
 Test Cases for Account Model
 """
+
 import json
 from random import randrange
 import pytest
@@ -9,17 +10,19 @@ from models.account import Account, DataValidationError
 
 ACCOUNT_DATA = {}
 
+
 @pytest.fixture(scope="module", autouse=True)
 def load_account_data():
-    """ Load data needed by tests """
+    """Load data needed by tests"""
     global ACCOUNT_DATA
-    with open('tests/fixtures/account_data.json') as json_data:
+    with open("tests/fixtures/account_data.json") as json_data:
         ACCOUNT_DATA = json.load(json_data)
 
     # Set up the database tables
     db.create_all()
     yield
     db.session.close()
+
 
 @pytest.fixture
 def setup_account():
@@ -29,13 +32,15 @@ def setup_account():
     db.session.commit()
     return account
 
+
 @pytest.fixture(scope="function", autouse=True)
 def setup_and_teardown():
-    """ Truncate the tables and set up for each test """
+    """Truncate the tables and set up for each test"""
     db.session.query(Account).delete()
     db.session.commit()
     yield
     db.session.remove()
+
 
 ######################################################################
 #  E X A M P L E   T E S T   C A S E
@@ -52,6 +57,7 @@ def setup_and_teardown():
 # Description: Ensure roles can be assigned and checked.
 # ===========================
 
+
 def test_account_role_assignment():
     """Test assigning roles to an account"""
     account = Account(name="John Doe", email="johndoe@example.com", role="user")
@@ -63,12 +69,14 @@ def test_account_role_assignment():
     account.change_role("admin")
     assert account.role == "admin"
 
+
 # ===========================
 # Test: Invalid Role Assignment
 # Author: John Businge
 # Date: 2025-01-30
 # Description: Ensure invalid roles raise a DataValidationError.
 # ===========================
+
 
 def test_invalid_role_assignment():
     """Test assigning an invalid role"""
@@ -93,47 +101,120 @@ Each test should include:
 - A meaningful **commit message** when submitting their PR.
 """
 
-# TODO 1: Test Default Values
-# - Ensure that new accounts have the correct default values (e.g., `disabled=False`).
-# - Check if an account has no assigned role, it defaults to "user".
+# Test Assignments
 
-# TODO 2: Test Updating Account Email
-# - Ensure an account’s email can be successfully updated.
-# - Verify that the updated email is stored in the database.
 
-# TODO 3: Test Finding an Account by ID
-# - Create an account and retrieve it using its ID.
-# - Ensure the retrieved account matches the created one.
+# ===========================
+# Test: Account Serialization
+# Author: Daniel Mamuza
+# Date: 2026-02-09
+# Description: Ensure Account.to_dict() returns a correct dictionary representation.
+# ===========================
+def test_account_serialization():
+    """Test that an account serializes to a dictionary"""
+    account = Account(
+        name="Thorfinn",
+        email="no.enemies@vinland.com",
+        phone_number="123456789",
+        disabled=False,
+        balance=0.0,
+        role="user",
+    )
 
-# TODO 4: Test Invalid Email Handling
-# - Check that invalid emails (e.g., "not-an-email") raise a validation error.
-# - Ensure accounts without an email cannot be created.
+    db.session.add(account)
+    db.session.commit()
 
-# TODO 5: Test Password Hashing
-# - Ensure that passwords are stored as **hashed values**.
-# - Verify that plaintext passwords are never stored in the database.
+    data = account.to_dict()
 
-# TODO 6: Test Account Persistence
-# - Create an account, commit the session, and restart the session.
-# - Ensure the account still exists in the database.
+    # verify type and serialized values
+    assert isinstance(data, dict)
+    assert "password_hash" not in data
+    assert data == {
+        "id": account.id,
+        "name": "Thorfinn",
+        "email": "no.enemies@vinland.com",
+        "phone_number": "123456789",
+        "disabled": False,
+        "date_joined": account.date_joined,
+        "balance": 0.0,
+        "role": "user",
+    }
 
-# TODO 7: Test Searching by Name
-# - Ensure accounts can be searched by their **name**.
-# - Verify that partial name searches return relevant accounts.
 
-# TODO 8: Test Bulk Insertion
-# - Create and insert multiple accounts at once.
-# - Verify that all accounts are successfully stored in the database.
+# Student 2: Test invalid email input
+# - Ensure invalid email formats raise a validation error.
+# Target Method: validate_email()
 
-# TODO 9: Test Account Deactivation/Reactivate
-# - Ensure accounts can be deactivated.
-# - Verify that deactivated accounts cannot perform certain actions.
-# - Ensure reactivation correctly restores the account.
+# Student 3: Test missing required fields
+# - Ensure account initialization fails when required fields are missing.
+# Target Method: Account() initialization
 
-# TODO 10: Test Email Uniqueness Enforcement
-# - Ensure that duplicate emails are not allowed.
-# - Verify that accounts must have a unique email in the database.
 
-# TODO 11: Test Role-Based Access
-# - Ensure users with different roles ('admin', 'user', 'guest') have appropriate permissions.
-# - Verify that role changes are correctly reflected in the database.
+# ===========================
+# Test: Test Positive Deposit
+# Author: Reece Galgana
+# Date: 2025-02-11
+# Description: Verify that depositing a positive amount correctly increases the balance.
+# ===========================
+def test_positive_deposit():
+    account = Account(
+        name="Gorilla Sushi", email="gorillasushi@gmail.com", role="user", balance=0
+    )
+
+    # Depositing small positive integer increases balance accordingly.
+    account.deposit(1)
+    assert account.balance == 1
+
+    # Depositing large positive integer increases balance accordingly.
+    account.deposit(2**32)
+    assert account.balance == (2**32) + 1
+
+    # Depositing small positive float increases balance accordingly.
+    account.deposit(1.982)
+    assert account.balance == (2**32) + 1 + 1.982
+
+    # Depositing small positive float increases balance accordingly.
+    account.deposit(2**32.1)
+    assert account.balance == (2**32) + 1 + 1.982 + (2**32.1)
+
+
+# Student 5: Test deposit with zero/negative values
+# - Ensure zero or negative deposits are rejected.
+# Target Method: deposit()
+
+# Student 6: Test valid withdrawal
+# - Verify that withdrawing a valid amount correctly decreases the balance.
+# Target Method: withdraw()
+
+
+# ===========================
+# Test: Test Withdrawl With Insufficient Funds
+# Author: Jonah Lewis
+# Date: 2025-02-15
+# Description: Verify that withdrawing an amount larger than the account balance raises an exception
+# ===========================
+def test_withdrawl_insufficient_funds():
+    """Test withdrawing from an account with insufficient funds"""
+
+    account = Account(balance=0)
+    with pytest.raises(DataValidationError):
+        account.withdraw(1)
+
+
+# Student 8: Test password hashing
+# - Ensure passwords are properly hashed.
+# - Verify that password verification works correctly.
+# Target Methods: set_password() / check_password()
+
+# Student 9: Test account deactivation/reactivation
+# - Ensure accounts can be deactivated and reactivated correctly.
+# Target Methods: deactivate() / reactivate()
+
+# Student 10: Test email uniqueness enforcement
+# - Ensure duplicate emails are not allowed.
+# Target Method: validate_unique_email()
+
+# Student 11: Test deleting an account
+# - Verify that an account can be successfully deleted from the database.
+# Target Method: delete()
+
