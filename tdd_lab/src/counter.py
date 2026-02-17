@@ -35,13 +35,13 @@ def nonexistent_counter(name):
     return jsonify({name: COUNTERS[name]}), status.HTTP_200_OK
 
 
-@app.route("/counters/<name>", methods=["DELETE"])
-def delete_counter(name):
-    # i have purposefully not included a check for if the counter already exists
-    # this is because student 8 will need to implement this :)
+# @app.route("/counters/<name>", methods=["DELETE"])
+# def delete_counter(name):
+#     # i have purposefully not included a check for if the counter already exists
+#     # this is because student 8 will need to implement this :)
 
-    COUNTERS.pop(name)
-    return jsonify({name: name}), status.HTTP_204_NO_CONTENT
+#     COUNTERS.pop(name)
+#     return jsonify({name: name}), status.HTTP_204_NO_CONTENT
 
 @app.route('/counters/<name>', methods=['DELETE'])
 def delete_counter(name):
