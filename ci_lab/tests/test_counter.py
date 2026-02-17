@@ -2,7 +2,8 @@
 Test Cases for Counter Web Service
 
 Create a service that can keep a track of multiple counters
-- API must be RESTful - see the status.py file. Following these guidelines, you can make assumptions about
+- API must be RESTful - see the status.py file. Following these guidelines,
+ you can make assumptions about
 how to call the web service and assert what it should return.
 - The endpoint should be called /counters
 - When creating a counter, you must specify the name in the path.
@@ -164,7 +165,7 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.OK
         assert response.get_json() == {"test1": 5}
 
-        # TODO: Add an assertion to check setting to the same value does not change it again
+    # TODO: Add an assertion to check setting to the same value does not change it again
 
     # ===========================
     # Test: Prevent negative counter values
@@ -211,7 +212,7 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.NOT_FOUND
 
-        # TODO: Add an assertion to verify the error message contains the word 'not found'
+    # TODO: Add an assertion to verify the error message contains the word 'not found'
 
     # ===========================
     # Test: Get total number of counters
@@ -277,4 +278,5 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
-        # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+        # TODO: Add an assertion to verify the error message specifically says
+        #  'Invalid counter name'S

@@ -2,7 +2,7 @@
 Counter API Implementation
 """
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from http import HTTPStatus
 import re
 
@@ -21,10 +21,11 @@ def is_valid_counter_name(name):
 def create_counter(name):
     """Create a new counter"""
     if not is_valid_counter_name(name):
+        error_msg = "Invalid counter name. Only alphanumeric and underscores allowed."
         return (
             jsonify(
                 {
-                    "error": "Invalid counter name. Only alphanumeric and underscores allowed."
+                    "error": error_msg
                 }
             ),
             HTTPStatus.BAD_REQUEST,
