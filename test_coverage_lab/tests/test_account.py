@@ -7,6 +7,7 @@ from random import randrange
 import pytest
 from models import db
 from models.account import Account, DataValidationError
+from sqlalchemy.exc import IntegrityError
 
 ACCOUNT_DATA = {}
 
@@ -178,9 +179,23 @@ def test_invalid_email_handling():
     with pytest.raises(DataValidationError):
         account.validate_email()
 
-# Student 3: Test missing required fields
-# - Ensure account initialization fails when required fields are missing.
-# Target Method: Account() initialization
+# ===========================
+# Test: Missing Required Fields
+# Author: Manjot Sandhu
+# Date: 2026-02-14
+# Description: Ensure account initialization fails when required fields are missing.
+# ===========================
+
+def test_missing_required_fields():
+    account = Account()
+    db.session.add(account)
+
+    # Commit should fail because required fields are missing.
+    with pytest.raises(IntegrityError):
+        db.session.commit()
+
+    # Roll back session to restore db
+    db.session.rollback()
 
 # ===========================
 # Test: Test Positive Deposit

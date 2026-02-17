@@ -15,12 +15,10 @@ import pytest
 from src import app
 from src import status
 
-
 @pytest.fixture()
 def client():
     """Fixture for Flask test client"""
     return app.test_client()
-
 
 @pytest.mark.usefixtures("client")
 class TestCounterEndpoints:
