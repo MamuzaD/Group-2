@@ -208,10 +208,6 @@ def test_positive_deposit():
     account.deposit(2**32.1)
     assert account.balance == (2**32) + 1 + 1.982 + (2**32.1)
 
-
-# Student 5: Test deposit with zero/negative values
-# - Ensure zero or negative deposits are rejected.
-# Target Method: deposit()
 # ===========================
 # Test: Test Zero/Negative Deposit
 # Author: Evan Kinnear
