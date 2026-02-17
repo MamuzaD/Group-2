@@ -137,6 +137,31 @@ Each test should include:
 # - Ensure duplicate emails are not allowed.
 # Target Method: validate_unique_email()
 
-# Student 11: Test deleting an account
-# - Verify that an account can be successfully deleted from the database.
-# Target Method: delete()
+# ===========================
+# Test: Deleting An Account
+# Author: Yahir Escobar
+# Date: 2026-02-16
+# Description: Ensure an account can be deleted from the database
+# ===========================
+
+def test_delete_account():
+
+    # Create a test account
+    account = Account(
+        name="Test User",
+        email="user@example.com"
+    )
+    db.session.add(account)
+    db.session.commit()
+
+    # Verify the account was created
+    assert account.id is not None
+    found = Account.query.get(account.id)
+    assert found is not None
+
+    # Delete the account
+    account.delete()
+
+    # Verify the account was deleted
+    deleted = Account.query.get(account.id)
+    assert deleted is None

@@ -94,4 +94,3 @@ class Account(db.Model):
         """Deletes the account from the database"""
         db.session.delete(self)
         db.session.commit()
-
