@@ -34,6 +34,7 @@ def nonexistent_counter(name):
         ), status.HTTP_404_NOT_FOUND
     return jsonify({name: COUNTERS[name]}), status.HTTP_200_OK
 
+
 @app.route("/counters/<name>", methods=["PUT"])
 def increment_counter(name):
     # i have purposefully not included a check for if the counter doesn't exist
@@ -41,9 +42,9 @@ def increment_counter(name):
     COUNTERS[name] += 1
     return jsonify({}), status.HTTP_200_OK
 
-@app.route('/counters/<name>', methods=['DELETE'])
+@app.route("/counters/<name>", methods=["DELETE"])
 def delete_counter(name):
     if not counter_exists(name):
         return jsonify({"error": f"Counter {name} not found"}), status.HTTP_404_NOT_FOUND
-    del COUNTERS[name]
-    return jsonify({}), status.HTTP_200_OK
+    COUNTERS.pop(name)
+    return jsonify({name: name}), status.HTTP_204_NO_CONTENT
