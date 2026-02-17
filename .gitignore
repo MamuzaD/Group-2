@@ -10,3 +10,7 @@ Thumbs.db
 .env
 *.env
 .env.local
+
+# python
+.venv
+data
