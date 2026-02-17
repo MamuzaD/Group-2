@@ -1,25 +1,29 @@
 """
 Test Cases for Account Model
 """
+
 import json
 from random import randrange
 import pytest
 from models import db
 from models.account import Account, DataValidationError
+from sqlalchemy.exc import IntegrityError
 
 ACCOUNT_DATA = {}
 
+
 @pytest.fixture(scope="module", autouse=True)
 def load_account_data():
-    """ Load data needed by tests """
+    """Load data needed by tests"""
     global ACCOUNT_DATA
-    with open('tests/fixtures/account_data.json') as json_data:
+    with open("tests/fixtures/account_data.json") as json_data:
         ACCOUNT_DATA = json.load(json_data)
 
     # Set up the database tables
     db.create_all()
     yield
     db.session.close()
+
 
 @pytest.fixture
 def setup_account():
@@ -29,13 +33,15 @@ def setup_account():
     db.session.commit()
     return account
 
+
 @pytest.fixture(scope="function", autouse=True)
 def setup_and_teardown():
-    """ Truncate the tables and set up for each test """
+    """Truncate the tables and set up for each test"""
     db.session.query(Account).delete()
     db.session.commit()
     yield
     db.session.remove()
+
 
 ######################################################################
 #  E X A M P L E   T E S T   C A S E
@@ -52,6 +58,7 @@ def setup_and_teardown():
 # Description: Ensure roles can be assigned and checked.
 # ===========================
 
+
 def test_account_role_assignment():
     """Test assigning roles to an account"""
     account = Account(name="John Doe", email="johndoe@example.com", role="user")
@@ -63,12 +70,14 @@ def test_account_role_assignment():
     account.change_role("admin")
     assert account.role == "admin"
 
+
 # ===========================
 # Test: Invalid Role Assignment
 # Author: John Businge
 # Date: 2025-01-30
 # Description: Ensure invalid roles raise a DataValidationError.
 # ===========================
+
 
 def test_invalid_role_assignment():
     """Test assigning an invalid role"""
@@ -131,13 +140,62 @@ def test_account_serialization():
         "role": "user",
     }
 
-# Student 2: Test invalid email input
-# - Ensure invalid email formats raise a validation error.
-# Target Method: validate_email()
+# ===========================
+# Test: Invalid Email Handling
+# Author: Hristiyan Melios
+# Date: 2026-02-16
+# Description: - Ensure invalid emails raise a DataValidationError.
+# Ensure accounts without an email cannot be created.
+# ===========================
+def test_invalid_email_handling():
 
-# Student 3: Test missing required fields
-# - Ensure account initialization fails when required fields are missing.
-# Target Method: Account() initialization
+    # Attempt to assign no email.
+    account = Account(role="user")
+    with pytest.raises(TypeError): # match() can't accept None type.
+        account.validate_email()
+
+    # Attempt invalid email: No '@' symbol.
+    account = Account(role="user", email="not-an-email")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No '.' symbol after '@'.
+    account = Account(role="user", email="not-an-email@gmail")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No text after '.'
+    account = Account(role="user", email="not-an-email@gmail.")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: No text before after '@'.
+    account = Account(role="user", email="@gmail.com")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+    # Attempt invalid email: Special characters.
+    account = Account(role="user", email="gorilla-sushi@gmail.com!")
+    with pytest.raises(DataValidationError):
+        account.validate_email()
+
+# ===========================
+# Test: Missing Required Fields
+# Author: Manjot Sandhu
+# Date: 2026-02-14
+# Description: Ensure account initialization fails when required fields are missing.
+# ===========================
+
+def test_missing_required_fields():
+    account = Account()
+    db.session.add(account)
+
+    # Commit should fail because required fields are missing.
+    with pytest.raises(IntegrityError):
+        db.session.commit()
+
+    # Roll back session to restore db
+    db.session.rollback()
 
 # ===========================
 # Test: Test Positive Deposit
@@ -154,16 +212,17 @@ def test_positive_deposit():
     assert account.balance == 1
 
     # Depositing large positive integer increases balance accordingly.
-    account.deposit(2 ** 32)
-    assert account.balance == (2 ** 32) + 1
+    account.deposit(2**32)
+    assert account.balance == (2**32) + 1
 
     # Depositing small positive float increases balance accordingly.
     account.deposit(1.982)
-    assert account.balance == (2 ** 32) + 1 + 1.982
+    assert account.balance == (2**32) + 1 + 1.982
 
     # Depositing small positive float increases balance accordingly.
-    account.deposit(2 ** 32.1)
-    assert account.balance == (2 ** 32) + 1 + 1.982 + (2 ** 32.1)
+    account.deposit(2**32.1)
+    assert account.balance == (2**32) + 1 + 1.982 + (2**32.1)
+
 
 # Student 5: Test deposit with zero/negative values
 # - Ensure zero or negative deposits are rejected.
@@ -190,6 +249,30 @@ def test_withdrawl_insufficient_funds():
 # - Ensure passwords are properly hashed.
 # - Verify that password verification works correctly.
 # Target Methods: set_password() / check_password()
+
+# ===========================
+# Test: Password Hashing
+# Author: Nathan Dela Pena
+# Date: 2026-02-16
+# Description: Test password hashing
+# ===========================
+
+def test_password_hashing(setup_account):
+    account = setup_account
+
+    # set a password
+    account.set_password("Testing123!")
+
+    # ensure the password is not stored as a string
+    assert account.password_hash != "Testing123!"
+    assert account.password_hash is not None
+
+    # verify the password
+    assert account.check_password("Testing123!") is True
+
+    # testing wrong password
+    assert account.check_password("Wrongpas!") is False
+
 
 # Student 9: Test account deactivation/reactivation
 # - Ensure accounts can be deactivated and reactivated correctly.
