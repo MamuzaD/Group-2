@@ -283,6 +283,26 @@ def test_password_hashing(setup_account):
 # Target Method: validate_unique_email()
 
 # ===========================
+# Test: Email Uniqueness Enforcement
+# Author: Nathan Kim
+# Date: 2026-02-16
+# Description: Test email uniqueness enforcement
+# ===========================
+
+def validate_unique_email():
+    """Test that duplicate emails are not allowed"""
+
+    # Create an account with a specific email
+    account1 = Account(name="Bazooka", email="ratemydate@example.com")
+
+    # Try to create another account with the same email
+    with pytest.raises(DataValidationError):
+        account2 = Account(name="Thorkell", email="ratemydate@example.com")
+
+
+# Student 11: Test deleting an account
+# - Verify that an account can be successfully deleted from the database.
+# Target Method: delete()
 # Test: Deleting An Account
 # Author: Yahir Escobar
 # Date: 2026-02-16
