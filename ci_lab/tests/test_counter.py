@@ -277,3 +277,21 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+
+    # ===========================
+    # Danie's extra test: Retrieve counters with values equal to a given value
+    # ===========================
+    def test_counters_equal_to_value(self, client):
+        """It should return only counters whose value equals the given value"""
+        client.post("/counters/reset")
+        client.post("/counters/low")
+        client.post("/counters/mid")
+        client.post("/counters/high")
+        client.put("/counters/low/set/5")
+        client.put("/counters/mid/set/10")
+        client.put("/counters/high/set/10")
+
+        response = client.get("/counters/equal/10")
+
+        assert response.status_code == HTTPStatus.OK
+        assert response.get_json() == {"mid": 10, "high": 10}

@@ -159,3 +159,10 @@ def get_counters_less_than_threshold(threshold):
         k: v for k, v in COUNTERS.items() if v < threshold
     }  # Only keep valid ones
     return jsonify(filtered_counters), HTTPStatus.OK
+
+
+@app.route("/counters/equal/<int:value>", methods=["GET"])
+def get_counters_equal_to(value):
+    """Get all counters whose value equals the given value"""
+    filtered_counters = {k: v for k, v in COUNTERS.items() if v == value}
+    return jsonify(filtered_counters), HTTPStatus.OK
