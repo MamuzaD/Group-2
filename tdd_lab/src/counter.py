@@ -35,6 +35,13 @@ def nonexistent_counter(name):
     return jsonify({name: COUNTERS[name]}), status.HTTP_200_OK
 
 
+@app.route("/counters/<name>", methods=["PUT"])
+def increment_counter(name):
+    # i have purposefully not included a check for if the counter doesn't exist
+    # this is because student 6 will need to implement this :)
+    COUNTERS[name] += 1
+    return jsonify({}), status.HTTP_200_OK
+
 @app.route("/counters/<name>", methods=["DELETE"])
 def delete_counter(name):
     if not counter_exists(name):

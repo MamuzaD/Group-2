@@ -29,6 +29,12 @@ class TestCounterEndpoints:
         result = client.post('/counters/foo')
         assert result.status_code == status.HTTP_201_CREATED
 
+    def test_increment_counter(self, client):
+        """This test should increment a counter"""
+        client.post("/counters/test")
+        result = client.put("/counters/test")
+        assert result.status_code == status.HTTP_200_OK
+
 def test_delete_nonexistent_counter(client):
     # attempt to delete a counter that doesn't exist
     result = client.delete('/counters/nonexistent')
