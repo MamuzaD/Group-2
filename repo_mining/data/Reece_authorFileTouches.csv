@@ -1,0 +1,168 @@
+file,date,name,login
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/RootItemResult.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/RootSampleApp.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/extensions/ViewExtensions.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/ResultIconView.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/RootItemAdapter.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/RootedResultTextView.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/ScopedActivity.kt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/cpp/CMakeLists.txt,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2024-09-12T10:16:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.kt,2024-08-05T18:31:03Z,Artsem Kurantsou,ArtsemKurantsou
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.kt,2024-08-04T19:40:34Z,Artsem Kurantsou,ArtsemKurantsou
+app/src/main/java/com/scottyab/rootbeer/sample/RootSampleApp.kt,2024-08-04T19:40:34Z,Artsem Kurantsou,ArtsemKurantsou
+app/src/main/java/com/scottyab/rootbeer/sample/ui/RootItemAdapter.kt,2024-08-04T19:40:34Z,Artsem Kurantsou,ArtsemKurantsou
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2021-11-16T14:04:57Z,grubeli,
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2021-05-24T07:46:20Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2021-05-24T07:45:07Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2021-05-24T07:35:11Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/cpp/CMakeLists.txt,2021-05-22T13:42:21Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/cpp/toolChecker.cpp,2021-05-22T13:42:21Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/cpp/toolChecker.h,2021-05-22T13:42:21Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2021-05-21T14:40:38Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckForRootWorker.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/RootItemResult.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/RootSampleApp.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/extensions/ViewExtensions.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/ResultIconView.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/RootItemAdapter.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/RootedResultTextView.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/ui/ScopedActivity.kt,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2021-05-08T14:18:37Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-07-21T13:19:44Z,Slim Namouchi,namouchislim
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-07-21T13:10:44Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-07-15T20:47:49Z,Fi5t,Fi5t
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-02-07T14:44:11Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2020-02-07T14:44:11Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-02-07T09:43:09Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2020-02-07T09:43:09Z,mat,
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2020-02-03T20:42:40Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2020-02-03T20:42:40Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2020-02-03T20:42:40Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-01-31T00:54:28Z,Daniel Kutik,danielkutik
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-31T00:54:28Z,Daniel Kutik,danielkutik
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-01-30T16:17:56Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-01-30T13:09:02Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-30T13:05:20Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-01-30T13:05:03Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-30T13:05:03Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2020-01-28T14:06:12Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-28T14:06:12Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-28T13:03:18Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2020-01-28T12:41:49Z,mat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2019-12-09T10:32:18Z,Ivan Vlasov,BlizzedRu
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2019-12-09T10:32:18Z,Ivan Vlasov,BlizzedRu
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2019-11-16T02:39:54Z,Daniel Kutik,danielkutik
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2019-11-16T02:39:54Z,Daniel Kutik,danielkutik
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2019-11-16T02:34:24Z,Daniel Kutik,danielkutik
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2019-11-16T02:34:24Z,Daniel Kutik,danielkutik
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2019-03-14T12:24:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2019-03-14T12:24:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2019-03-14T12:24:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2019-03-14T12:24:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2019-03-14T12:24:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-06-14T15:53:38Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-05-11T12:00:38Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-05-11T12:00:38Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2018-05-11T11:04:52Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-05-11T11:04:28Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-05-11T10:59:44Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2018-03-20T17:57:33Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2018-03-20T17:57:33Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-03-20T17:57:33Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-03-16T16:49:07Z,altvnv,p2paltvnv
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2018-03-16T16:42:19Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2018-03-16T16:42:19Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-03-16T16:42:19Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2018-03-16T12:14:23Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2018-03-16T12:02:21Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2018-03-16T11:36:53Z,altvnv,p2paltvnv
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2017-10-31T18:57:32Z,matthew,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-09-29T08:23:05Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-08-19T16:20:33Z,Frieder Bluemle,friederbluemle
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2017-08-19T16:20:33Z,Frieder Bluemle,friederbluemle
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-08-11T15:34:54Z,Ali Waseem,awaseem
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-06-11T14:34:20Z,LeonKarabchevsky,LeonKarabchevsky
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-06-07T07:53:52Z,BIOCATCH\Leon.Karabchevsky,
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2017-05-12T21:31:11Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2017-05-12T21:31:11Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-05-12T21:21:12Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2017-05-11T16:41:00Z,Frieder Bluemle,friederbluemle
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2017-05-11T16:55:33Z,Frieder Bluemle,friederbluemle
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-05-10T19:44:29Z,vyas,vyas-n
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2017-03-29T11:18:37Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-03-29T11:18:37Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2017-03-29T11:18:37Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-03-24T16:11:58Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2017-03-24T14:16:12Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2017-03-24T14:16:12Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-03-24T14:16:12Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2017-03-24T13:41:16Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-03-24T13:31:19Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2017-03-24T13:30:47Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-03-13T22:05:11Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2017-02-15T12:53:36Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2017-02-15T12:53:36Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2017-02-15T12:53:36Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2016-09-14T21:25:21Z,leocadiotine,leocadiotine
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2016-07-01T20:13:52Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2016-07-01T20:13:06Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2016-07-01T14:25:44Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/CheckRootTask.java,2016-07-01T14:40:45Z,Andy Barber,andyb129
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2016-07-01T14:40:45Z,Andy Barber,andyb129
+app/src/main/java/com/scottyab/rootbeer/sample/TextViewFont.java,2016-07-01T14:40:45Z,Andy Barber,andyb129
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2016-05-17T15:20:15Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2016-04-18T16:36:03Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2016-04-01T15:04:36Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2016-03-16T14:14:44Z,Mohammed Ezzat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2016-03-16T14:05:46Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2016-03-16T14:05:46Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2016-03-16T14:05:46Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2016-03-16T14:05:46Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2016-03-15T13:13:43Z,Mohammed Ezzat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2016-03-15T13:13:43Z,Mohammed Ezzat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2016-03-15T13:13:43Z,Mohammed Ezzat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2016-03-15T13:13:43Z,Mohammed Ezzat,
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-30T16:22:10Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-22T10:17:02Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-22T10:11:09Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-22T09:06:26Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-21T20:44:58Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-12-21T20:43:55Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2015-09-16T12:14:10Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-09-16T12:13:36Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-30T15:06:34Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-30T14:59:48Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:45:20Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-30T14:45:20Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2015-06-30T14:45:12Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:45:12Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:36:54Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-30T14:36:54Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-30T14:14:20Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:14:20Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-30T14:14:20Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2015-06-30T14:14:08Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:14:08Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/Utils.java,2015-06-30T14:14:08Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-30T14:14:02Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-30T14:14:02Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-30T13:40:46Z,Matthew Rollings,stealthcopter
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-29T13:06:59Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-29T13:06:59Z,Scott Alexander-Bown,scottyab
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2015-06-29T13:06:14Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2015-06-26T18:48:49Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-26T15:57:05Z,Matthew Rollings,stealthcopter
+app/src/main/java/com/scottyab/rootbeer/sample/MainActivity.java,2015-06-26T15:50:40Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/Const.java,2015-06-26T15:50:40Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeer.java,2015-06-26T15:50:40Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/RootBeerNative.java,2015-06-26T15:50:40Z,Scott Alexander-Bown,scottyab
+rootbeerlib/src/main/java/com/scottyab/rootbeer/util/QLog.java,2015-06-26T15:50:40Z,Scott Alexander-Bown,scottyab
