@@ -135,7 +135,7 @@ class TestCounterEndpoints:
 
     # ===========================
     # Test: Retrieve top N lowest counters
-    # Author: Student 3
+    # Author: Manjot Sandhu
     # Modification: Ensure lowest counter has value 0.
     # ===========================
     def test_bottom_n_counters(self, client):
@@ -144,12 +144,16 @@ class TestCounterEndpoints:
         client.post("/counters/a")
         client.post("/counters/b")
 
+        # Both a and b are lowest so we must break the tie to have 'b' in the response
+        client.put("/counters/a")
+
         response = client.get("/counters/bottom/1")
 
         assert response.status_code == HTTPStatus.OK
         assert min(response.get_json().values()) == 0
 
         # TODO: Add an assertion to check that 'b' is indeed in the response
+        assert 'b' in response.get_json()
 
     # ===========================
     # Test: Set a counter to a specific value
@@ -278,3 +282,16 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+
+
+    def test_delete_removes_counter(self, client):
+        """It should remove the counter so that it can no longer be retrieved"""
+        client.post("/counters/to_be_removed")
+
+        # Delete counter
+        response = client.delete("/counters/to_be_removed")
+        assert response.status_code == HTTPStatus.NO_CONTENT
+
+        # Try to get counter, should not be possible as it was removed
+        response = client.get("/counters/to_be_removed")
+        assert response.status_code == HTTPStatus.NOT_FOUND
